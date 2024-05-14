@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import * as bcrypt from 'bcrypt';
 
 export class User {
   constructor(
@@ -11,5 +12,9 @@ export class User {
   static create(name: string, email: string, password: string) {
     const id = uuidv4();
     return new User(id, name, email, password);
+  }
+
+  verifyPassword(hashPassword) {
+    return bcrypt.compare(this.password, hashPassword);
   }
 }
