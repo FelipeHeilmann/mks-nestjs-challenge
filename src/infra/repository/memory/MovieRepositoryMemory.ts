@@ -27,4 +27,10 @@ export class MovieRepositoryMemory implements MovieRepository {
     if (index === -1) throw new Error('Movie not found');
     movie[index] = movie;
   }
+
+  async delete(movieId: string): Promise<void> {
+    const index = this.movies.findIndex((movie) => movie.id === movieId);
+    if (index === -1) throw new Error('Movie not found');
+    this.movies.splice(index, 1);
+  }
 }

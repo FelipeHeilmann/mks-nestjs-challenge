@@ -5,4 +5,5 @@ export default interface MovieRepository {
   getById(movieId: string): Promise<Movie>;
   save(movie: Movie): Promise<void>;
   update(movie: Movie): Promise<void>;
+  delete(movieId: string): Promise<void>;
 }
