@@ -1,7 +1,10 @@
+import { Inject } from '@nestjs/common';
 import MovieRepository from 'src/domain/repository/MovieRepository';
 
 export class ListMovies {
-  constructor(readonly moviesRepository: MovieRepository) {}
+  constructor(
+    @Inject('MovieRepository') readonly moviesRepository: MovieRepository,
+  ) {}
 
   async execute(): Promise<Output> {
     const movies = await this.moviesRepository.list();
@@ -14,7 +17,7 @@ export class ListMovies {
         director: movie.getDirector(),
         gender: movie.getGenre(),
         cast: movie.getCast(),
-        producer: movie.getStudio(),
+        studio: movie.getStudio(),
       });
     }
     return output;
@@ -26,6 +29,6 @@ type Output = {
   director: string;
   year: number;
   gender: string;
-  producer: string;
+  studio: string;
   cast: string[];
 }[];

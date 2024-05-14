@@ -30,7 +30,7 @@ export class MovieModel {
     year: number,
     genre: string,
     director: string,
-    producer: string,
+    studio: string,
     cast: string[],
   ) {
     this.id = id;
@@ -38,7 +38,7 @@ export class MovieModel {
     this.year = year;
     this.genre = genre;
     this.director = director;
-    this.studio = producer;
+    this.studio = studio;
     this.cast = cast;
   }
 
