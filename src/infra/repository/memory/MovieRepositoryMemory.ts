@@ -21,4 +21,10 @@ export class MovieRepositoryMemory implements MovieRepository {
   async save(movie: Movie): Promise<void> {
     this.movies.push(movie);
   }
+
+  async update(movie: Movie): Promise<void> {
+    const index = this.movies.findIndex((movie) => movie.id === movie.id);
+    if (index === -1) throw new Error('Movie not found');
+    movie[index] = movie;
+  }
 }

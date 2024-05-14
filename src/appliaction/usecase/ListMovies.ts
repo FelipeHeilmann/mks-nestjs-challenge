@@ -9,12 +9,12 @@ export class ListMovies {
     for (const movie of movies) {
       output.push({
         id: movie.id,
-        name: movie.name,
-        year: movie.year,
-        director: movie.director,
-        gender: movie.gender,
-        cast: movie.cast,
-        producer: movie.producer,
+        name: movie.getName(),
+        year: movie.getYear(),
+        director: movie.getDirector(),
+        gender: movie.getGender(),
+        cast: movie.getCast(),
+        producer: movie.getProducer(),
       });
     }
     return output;
