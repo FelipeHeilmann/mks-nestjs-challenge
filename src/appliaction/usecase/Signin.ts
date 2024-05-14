@@ -1,9 +1,12 @@
 import UserRepository from 'src/domain/repository/UserRepository';
 import TokenGenerator from '../token/TokenGenerator';
+import { Inject } from '@nestjs/common';
 
 export class Signin {
   constructor(
+    @Inject('UserRepository')
     readonly userRepository: UserRepository,
+    @Inject('TokenGenerator')
     readonly tokenGenetator: TokenGenerator,
   ) {}
 

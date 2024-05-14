@@ -1,9 +1,12 @@
+import { Inject, Injectable } from '@nestjs/common';
 import { User } from '../../domain/entity/User';
 import UserRepository from '../../domain/repository/UserRepository';
 import * as bcrypt from 'bcrypt';
 
 export class Signup {
-  constructor(readonly userRepository: UserRepository) {}
+  constructor(
+    @Inject('UserRepository') readonly userRepository: UserRepository,
+  ) {}
 
   async execute(input: Input): Promise<Output> {
     const existingUser = await this.userRepository.getByEmail(input.email);
@@ -12,6 +15,7 @@ export class Signup {
     const hashPassword = await bcrypt.hash(input.password, salt);
     const user = User.create(input.name, input.email, hashPassword);
     await this.userRepository.save(user);
+
     return {
       id: user.id,
     };
