@@ -1,5 +1,5 @@
 import UserRepository from 'src/domain/repository/UserRepository';
-import TokenGenerator from '../services/TokenGenerator';
+import TokenGenerator from '../token/TokenGenerator';
 
 export class Signin {
   constructor(

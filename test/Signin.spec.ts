@@ -1,7 +1,7 @@
 import { Signin } from '../src/appliaction/usecase/Signin';
 import { Signup } from '../src/appliaction/usecase/Signup';
 import { UserRepositoryMemory } from '../src/infra/repository/memory/UserRepositoryMemory';
-import { TokenGeneratorMemory } from '../src/infra/services/TokenGeneratorMemory';
+import { TokenGeneratorMemory } from '../src/infra/token/TokenGeneratorMemory';
 
 test('Deve fazer autenticar um usuario', async function () {
   const userRepository = new UserRepositoryMemory();
