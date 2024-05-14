@@ -8,6 +8,10 @@ export class MovieRepositoryMemory implements MovieRepository {
     this.movies = [];
   }
 
+  async list(): Promise<Movie[]> {
+    return this.movies;
+  }
+
   async getById(movieId: string): Promise<Movie> {
     const movie = this.movies.find((movie) => movie.id === movieId);
     if (!movie) throw new Error('Movie not found');
