@@ -8,9 +8,9 @@ test('Deve atualizar os dados de um filme', async function () {
   const input = {
     name: 'Spiderman 2',
     year: 2004,
-    gender: 'Super Hero',
+    genre: 'Super Hero',
     director: 'Sam Raimi',
-    producer: 'Columbia Pictures',
+    studio: 'Columbia Pictures',
     cast: ['Tobey Maguire', 'Kisten Dunst', 'James Franco', 'Alfred Molina'],
   };
   const createMovie = new CreateMovie(movieRepository);

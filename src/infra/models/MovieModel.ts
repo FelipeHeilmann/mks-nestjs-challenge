@@ -16,10 +16,10 @@ export class MovieModel {
   director: string;
 
   @Column()
-  gender: string;
+  genre: string;
 
   @Column()
-  producer: string;
+  studio: string;
 
   @Column('text', { array: true })
   cast: string[];
@@ -28,7 +28,7 @@ export class MovieModel {
     id: string,
     name: string,
     year: number,
-    gender: string,
+    genre: string,
     director: string,
     producer: string,
     cast: string[],
@@ -36,9 +36,9 @@ export class MovieModel {
     this.id = id;
     this.name = name;
     this.year = year;
-    this.gender = gender;
+    this.genre = genre;
     this.director = director;
-    this.producer = producer;
+    this.studio = producer;
     this.cast = cast;
   }
 
@@ -47,9 +47,9 @@ export class MovieModel {
       this.id,
       this.name,
       this.year,
-      this.gender,
+      this.genre,
       this.director,
-      this.producer,
+      this.studio,
       this.cast,
     );
   }
@@ -59,9 +59,9 @@ export class MovieModel {
       movie.id,
       movie.getName(),
       movie.getYear(),
-      movie.getGender(),
+      movie.getGenre(),
       movie.getDirector(),
-      movie.getProducer(),
+      movie.getStudio(),
       movie.getCast(),
     );
   }

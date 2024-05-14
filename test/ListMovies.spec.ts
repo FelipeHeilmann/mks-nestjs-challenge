@@ -7,25 +7,25 @@ test('Deve listar os filmes', async function () {
   const input1 = {
     name: 'Spiderman',
     year: 2002,
-    gender: 'Super Hero',
+    genre: 'Super Hero',
     director: 'Sam Raimi',
-    producer: 'Columbia Pictures',
+    studio: 'Columbia Pictures',
     cast: ['Tobey Maguire', 'Kisten Dunst', 'James Franco', 'William Defoe'],
   };
   const input2 = {
     name: 'Spiderman 2',
     year: 2004,
-    gender: 'Super Hero',
+    genre: 'Super Hero',
     director: 'Sam Raimi',
-    producer: 'Columbia Pictures',
+    studio: 'Columbia Pictures',
     cast: ['Tobey Maguire', 'Kisten Dunst', 'James Franco', 'Alfred Molina'],
   };
   const input3 = {
     name: 'Spiderman 3',
     year: 2007,
-    gender: 'Super Hero',
+    genre: 'Super Hero',
     director: 'Sam Raimi',
-    producer: 'Columbia Pictures',
+    studio: 'Columbia Pictures',
     cast: [
       'Tobey Maguire',
       'Kisten Dunst',

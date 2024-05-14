@@ -5,22 +5,22 @@ export class Movie {
     readonly id: string,
     private name: string,
     private year: number,
-    private gender: string,
+    private genre: string,
     private director: string,
-    private producer: string,
+    private studio: string,
     private cast: string[],
   ) {}
 
   static create(
     name: string,
     year: number,
-    gender: string,
+    genre: string,
     director: string,
     producer: string,
     cast: string[],
   ) {
     const id = uuidv4();
-    return new Movie(id, name, year, gender, director, producer, cast);
+    return new Movie(id, name, year, genre, director, producer, cast);
   }
 
   getName() {
@@ -35,12 +35,12 @@ export class Movie {
     return this.director;
   }
 
-  getGender() {
-    return this.gender;
+  getGenre() {
+    return this.genre;
   }
 
-  getProducer() {
-    return this.producer;
+  getStudio() {
+    return this.studio;
   }
 
   getCast() {
@@ -57,9 +57,9 @@ export class Movie {
   ) {
     this.name = name;
     this.year = year;
-    this.gender = gender;
+    this.genre = gender;
     this.director = director;
-    this.producer = producer;
+    this.studio = producer;
     this.cast = cast;
   }
 }

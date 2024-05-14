@@ -8,9 +8,9 @@ export class CreateMovie {
     const movie = Movie.create(
       input.name,
       input.year,
-      input.gender,
+      input.genre,
       input.director,
-      input.producer,
+      input.studio,
       input.cast,
     );
     await this.movieRepository.save(movie);
@@ -23,9 +23,9 @@ export class CreateMovie {
 type Input = {
   name: string;
   year: number;
-  gender: string;
+  genre: string;
   director: string;
-  producer: string;
+  studio: string;
   cast: string[];
 };
 

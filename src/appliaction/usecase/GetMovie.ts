@@ -10,9 +10,9 @@ export class GetMovie {
       name: movie.getName(),
       year: movie.getYear(),
       director: movie.getDirector(),
-      gender: movie.getGender(),
+      gender: movie.getGenre(),
       cast: movie.getCast(),
-      producer: movie.getProducer(),
+      producer: movie.getStudio(),
     };
   }
 }
