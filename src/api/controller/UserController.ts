@@ -3,7 +3,9 @@ import { Signup } from 'src/appliaction/usecase/Signup';
 import { SignupRequest } from '../request/SignupRequest';
 import { Signin } from 'src/appliaction/usecase/Signin';
 import { SigninRequest } from '../request/SigninRequest';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller()
 export class UserController {
   constructor(

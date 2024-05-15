@@ -1,9 +1,19 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { ApiProperty } from '@nestjs/swagger';
 
-class _signupRequest {
+export class SignupRequest {
+  @ApiProperty({
+    example: 'John Doe',
+  })
+  @ApiProperty()
   name: string;
+
+  @ApiProperty({
+    example: 'john.doe@gmail.com',
+  })
   email: string;
+
+  @ApiProperty({
+    example: 'abc123456',
+  })
   password: string;
 }
-
-export class SignupRequest extends PartialType(_signupRequest) {}
