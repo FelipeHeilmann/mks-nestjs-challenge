@@ -1,4 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
+import { NotFoundException } from 'src/appliaction/exceptions/ApplicationExeption';
 import { Movie } from 'src/domain/entity/Movie';
 import MovieRepository from 'src/domain/repository/MovieRepository';
 import { MovieModel } from 'src/infra/models/MovieModel';
@@ -25,7 +26,7 @@ export class MovieRepositoryTypeORM implements MovieRepository {
         id: movieId,
       },
     });
-    if (!movieModel) throw new Error('Movie was not found');
+    if (!movieModel) throw new NotFoundException('Movie was not found');
     return movieModel.toAggregate();
   }
 

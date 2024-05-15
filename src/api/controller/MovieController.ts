@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateMovie } from 'src/appliaction/usecase/CreateMovie';
 import { CreateMovieRequest } from '../request/CreateMovieRequest';
@@ -14,6 +15,7 @@ import { ListMovies } from 'src/appliaction/usecase/ListMovies';
 import { GetMovie } from 'src/appliaction/usecase/GetMovie';
 import { UpdateMovie } from 'src/appliaction/usecase/UpdateMovie';
 import { DeleteMovie } from 'src/appliaction/usecase/DeleteMovie';
+import { AuthMiddleware } from '../middleware/AuthMiddlewre';
 
 @Controller('movies')
 export class MovieController {
@@ -25,18 +27,21 @@ export class MovieController {
     private readonly deleteMovie: DeleteMovie,
   ) {}
 
+  @UseGuards(AuthMiddleware)
   @HttpCode(201)
   @Get()
   async getAll() {
     return await this.listMovies.execute();
   }
 
+  @UseGuards(AuthMiddleware)
   @HttpCode(200)
   @Get(':id')
   async getById(@Param('id') id: string) {
     return await this.getMovie.execute(id);
   }
 
+  @UseGuards(AuthMiddleware)
   @HttpCode(201)
   @Post()
   async create(@Body() request: CreateMovieRequest) {
@@ -51,6 +56,7 @@ export class MovieController {
     return await this.createMovie.execute(input);
   }
 
+  @UseGuards(AuthMiddleware)
   @HttpCode(204)
   @Put(':id')
   async update(@Param('id') id: string, @Body() request: CreateMovieRequest) {
@@ -66,6 +72,7 @@ export class MovieController {
     await this.updateMovie.execute(input);
   }
 
+  @UseGuards(AuthMiddleware)
   @HttpCode(204)
   @Delete(':id')
   async delete(@Param('id') id: string) {
