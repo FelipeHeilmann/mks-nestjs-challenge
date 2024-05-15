@@ -10,7 +10,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Documentação da API')
     .setDescription(
-      'Uma API com autenticação de usuários e cadastro de files de cinema ',
+      'Uma API com autenticação de usuários e cadastro de filmes de cinema ',
     )
     .setVersion('1.0')
     .addTag('users')

@@ -65,4 +65,24 @@ export class MovieModel {
       movie.getCast(),
     );
   }
+
+  static aggregatefromObject(movie: {
+    id: string;
+    name: string;
+    year: number;
+    genre: string;
+    director: string;
+    studio: string;
+    cast: string[];
+  }) {
+    return new Movie(
+      movie.id,
+      movie.name,
+      movie.year,
+      movie.genre,
+      movie.director,
+      movie.studio,
+      movie.cast,
+    );
+  }
 }

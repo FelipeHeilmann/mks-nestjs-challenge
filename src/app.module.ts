@@ -16,6 +16,8 @@ import { MovieRepositoryTypeORM } from './infra/repository/typeorm/MovieReposito
 import { GetMovie } from './appliaction/usecase/GetMovie';
 import { UpdateMovie } from './appliaction/usecase/UpdateMovie';
 import { DeleteMovie } from './appliaction/usecase/DeleteMovie';
+import { CachedMovieRepository } from './infra/repository/typeorm/CachedMovieRepositoryTypeORM';
+import { RedisCache } from './infra/repository/cache/RedisCache';
 
 @Module({
   imports: [
@@ -31,7 +33,6 @@ import { DeleteMovie } from './appliaction/usecase/DeleteMovie';
       password: 'docker',
       username: 'docker',
       database: 'mks',
-      synchronize: true,
       logging: true,
     }),
     TypeOrmModule.forFeature([UserModel, MovieModel]),
@@ -51,17 +52,22 @@ import { DeleteMovie } from './appliaction/usecase/DeleteMovie';
     DeleteMovie,
     UserRepositoryTypeORM,
     MovieRepositoryTypeORM,
+    RedisCache,
     {
       provide: 'UserRepository',
       useClass: UserRepositoryTypeORM,
     },
     {
       provide: 'MovieRepository',
-      useClass: MovieRepositoryTypeORM,
+      useClass: CachedMovieRepository,
     },
     {
       provide: 'TokenGenerator',
       useClass: TokenGeneratorNestJS,
+    },
+    {
+      provide: 'MemoryCache',
+      useClass: RedisCache,
     },
   ],
 })
