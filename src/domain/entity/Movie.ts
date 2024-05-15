@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
 export class Movie {
   constructor(
@@ -19,7 +19,7 @@ export class Movie {
     producer: string,
     cast: string[],
   ) {
-    const id = uuidv4();
+    const id = randomUUID();
     return new Movie(id, name, year, genre, director, producer, cast);
   }
 

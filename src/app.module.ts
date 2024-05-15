@@ -37,7 +37,7 @@ import { RedisCache } from './infra/repository/cache/RedisCache';
     }),
     TypeOrmModule.forFeature([UserModel, MovieModel]),
     JwtModule.register({
-      secret: process.env.secret,
+      secret: process.env.SECRET,
       signOptions: { expiresIn: '24h' },
     }),
   ],

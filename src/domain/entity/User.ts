@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
 import * as bcrypt from 'bcrypt';
+import { randomUUID } from 'crypto';
 
 export class User {
   constructor(
@@ -10,7 +10,7 @@ export class User {
   ) {}
 
   static create(name: string, email: string, password: string) {
-    const id = uuidv4();
+    const id = randomUUID();
     return new User(id, name, email, password);
   }
 
