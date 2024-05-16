@@ -2,7 +2,6 @@ import {
   ExceptionFilter,
   Catch,
   ArgumentsHost,
-  HttpStatus,
   HttpException,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
@@ -15,10 +14,7 @@ export class GlobalErrorMiddleware implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
 
-    const status =
-      exception instanceof BaseException || HttpException
-        ? exception.getStatus()
-        : HttpStatus.INTERNAL_SERVER_ERROR;
+    const status = this.getStatus(exception);
 
     const message = exception.message || 'Internal server error';
 
@@ -28,5 +24,15 @@ export class GlobalErrorMiddleware implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       path: request.url,
     });
+  }
+
+  private getStatus(exception: any): number {
+    if (exception instanceof BaseException) {
+      return exception.statusCode || 500;
+    }
+    if (exception instanceof HttpException) {
+      return exception.getStatus();
+    }
+    return 500;
   }
 }

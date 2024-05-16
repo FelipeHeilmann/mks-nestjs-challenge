@@ -2,6 +2,7 @@ import { Inject } from '@nestjs/common';
 import { User } from '../../domain/entity/User';
 import UserRepository from '../../domain/repository/UserRepository';
 import * as bcrypt from 'bcrypt';
+import { EmailInUse } from '../exceptions/ApplicationExeption';
 
 export class Signup {
   constructor(
@@ -10,7 +11,7 @@ export class Signup {
 
   async execute(input: Input): Promise<Output> {
     const existingUser = await this.userRepository.getByEmail(input.email);
-    if (existingUser) throw new Error('Email already in use');
+    if (existingUser) throw new EmailInUse();
     const salt = await bcrypt.genSalt(12);
     const hashPassword = await bcrypt.hash(input.password, salt);
     const user = User.create(input.name, input.email, hashPassword);

@@ -1,6 +1,7 @@
 import UserRepository from 'src/domain/repository/UserRepository';
 import TokenGenerator from '../token/TokenGenerator';
 import { Inject } from '@nestjs/common';
+import { InvalidCredentials } from '../exceptions/ApplicationExeption';
 
 export class Signin {
   constructor(
@@ -12,9 +13,9 @@ export class Signin {
 
   async execute(input: Input): Promise<Output> {
     const user = await this.userRepository.getByEmail(input.email);
-    if (!user) throw new Error('Email and/or password invalid');
+    if (!user) throw new InvalidCredentials();
     const passwordVerified = user.verifyPassword(input.password);
-    if (!passwordVerified) throw new Error('Email and/or password invalid');
+    if (!passwordVerified) throw new InvalidCredentials();
     const token = await this.tokenGenetator.generate(
       user.id,
       user.email,
