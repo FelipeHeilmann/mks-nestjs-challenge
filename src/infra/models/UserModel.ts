@@ -1,4 +1,5 @@
 import { User } from 'src/domain/entity/User';
+import { Email } from 'src/domain/vo/Email';
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('users')
@@ -23,10 +24,10 @@ export class UserModel {
   }
 
   toAggregate() {
-    return new User(this.id, this.name, this.email, this.password);
+    return new User(this.id, this.name, new Email(this.email), this.password);
   }
 
   static fromAggregate(user: User) {
-    return new UserModel(user.id, user.name, user.email, user.password);
+    return new UserModel(user.id, user.name, user.getEmail(), user.password);
   }
 }

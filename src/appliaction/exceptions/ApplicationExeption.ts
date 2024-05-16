@@ -23,3 +23,9 @@ export class EmailInUse extends BaseException {
     super('Email already in use', 422);
   }
 }
+
+export class InvalidEmail extends BaseException {
+  constructor() {
+    super('Email value is invalid', 400);
+  }
+}
