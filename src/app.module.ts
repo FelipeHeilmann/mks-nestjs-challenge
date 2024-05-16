@@ -17,7 +17,7 @@ import { GetMovie } from './appliaction/usecase/GetMovie';
 import { UpdateMovie } from './appliaction/usecase/UpdateMovie';
 import { DeleteMovie } from './appliaction/usecase/DeleteMovie';
 import { CachedMovieRepository } from './infra/repository/typeorm/CachedMovieRepositoryTypeORM';
-import { RedisCache } from './infra/repository/cache/RedisCache';
+import { RedisCache } from './infra/cache/RedisCache';
 
 @Module({
   imports: [
