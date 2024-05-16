@@ -43,6 +43,7 @@ export class CachedMovieRepository implements MovieRepository {
   }
 
   async delete(movieId: string): Promise<void> {
+    await this.cache.deleteValue(movieId);
     await this.decoreted.delete(movieId);
   }
 }
