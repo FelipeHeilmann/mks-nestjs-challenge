@@ -8,7 +8,7 @@ export class UserRepositoryMemory implements UserRepository {
     this.users = [];
   }
   async getByEmail(email: string): Promise<User> {
-    const user = this.users.find((user) => user.email === email);
+    const user = this.users.find((user) => user.getEmail() === email);
     return user;
   }
 

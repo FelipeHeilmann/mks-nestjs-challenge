@@ -26,6 +26,12 @@ export class EmailInUse extends BaseException {
 
 export class InvalidEmail extends BaseException {
   constructor() {
-    super('Email value is invalid', 400);
+    super('Email format invalid', 400);
+  }
+}
+
+export class InvalidName extends BaseException {
+  constructor() {
+    super('Name format invalid', 400);
   }
 }

@@ -18,8 +18,8 @@ export class Signin {
     if (!passwordVerified) throw new InvalidCredentials();
     const token = await this.tokenGenetator.generate(
       user.id,
-      user.email,
-      user.name,
+      user.getEmail(),
+      user.getName(),
     );
     return {
       token,
