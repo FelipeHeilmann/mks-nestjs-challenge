@@ -13,24 +13,14 @@ export class CachedMovieRepository implements MovieRepository {
   ) {}
 
   async list(): Promise<Movie[]> {
-    const cachedData = await this.cache.getValue('movies');
-    if (cachedData) {
-      const movies: Movie[] = [];
-      for (const movieData of cachedData) {
-        movies.push(MovieModel.aggregatefromObject(movieData));
-      }
-      return movies;
-    }
-    const movies = await this.decoreted.list();
-    await this.cache.setValue('movies', movies, 120);
-    return movies;
+    return await this.decoreted.list();
   }
 
   async getById(movieId: string): Promise<Movie> {
     const cachedData = await this.cache.getValue(movieId);
     if (cachedData) return MovieModel.aggregatefromObject(cachedData);
     const movie = await this.decoreted.getById(movieId);
-    await this.cache.setValue(movieId, movie, 120);
+    await this.cache.setValue(movieId, movie, 60);
     return movie;
   }
 
@@ -39,6 +29,7 @@ export class CachedMovieRepository implements MovieRepository {
   }
 
   async update(movie: Movie): Promise<void> {
+    await this.cache.setValue(movie.id, movie, 60);
     await this.decoreted.update(movie);
   }
 

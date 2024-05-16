@@ -25,7 +25,7 @@ export class RedisCache extends Redis implements Cache {
   async setValue(
     key: string,
     value: any,
-    expiresInSeconds: number = 120,
+    expiresInSeconds: number = 60,
   ): Promise<void> {
     await this.set(key, JSON.stringify(value), 'EX', expiresInSeconds);
   }
