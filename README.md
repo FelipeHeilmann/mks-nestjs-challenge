@@ -68,6 +68,19 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
+## Experiences
+
+1. Sobre as tecnologias, possuo uma experiência em alguns projetos usando o nestjs e typeORM, porém acredito que devemos isolar qualquer dependencia interna da aplicação sobre qualquer framework, para termos maior flexibilidade na hora da implementação e testabilidade.
+- No caso do Nest usando o apenas como "Driver" (conceito da hexagonal architecture).
+- No caso do TypeORM criando um modelo separado do Domínio, uma vez que representam conceitos diferentes e possuem responsabilidades diferentes também.
+
+2. Agora falando das tecnolgias mais gerais utilizadas
+- Já no caso do Docker se torna essencial para o deploy de uma forma mais prática  e
+criar um ambiente controlado, paraa que não haja mudanças de servidor que afetam diretamente a aplicação. Inclusive tenho trazido para o meu ambiente atual de trabalho.
+- O Swagger também está presente no meu ambiente atual de trabalho para trazermos maior conhecimento sobre as rotas da minha aplicação.
+- O Postgres é o banco de dados que eu mais utilizo nos meus projetos, utilizo há 4 anos.
+- O redis utilizei em poucos projetos, porém gosto de utilizar ele com o padrão decorator (padrão do GoF que adiciona comportamento a um objeto) para o repository para ter maior flexibilidade.
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
